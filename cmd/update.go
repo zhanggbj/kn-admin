@@ -17,25 +17,67 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/spf13/cobra"
-	clientset "k8s.io/client-go/kubernetes"
+	corev1 "k8s.io/api/core/v1"
+	"k8s.io/apimachinery/pkg/api/equality"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/client-go/kubernetes"
+	_ "k8s.io/client-go/plugin/pkg/client/auth/oidc"
+	"k8s.io/client-go/tools/clientcmd"
 )
 
 var domain string
+
 // updateCmd represents the update command
 var updateCmd = &cobra.Command{
 	Use:   "update",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Update route domain",
+	Long: `Update Knative route domain for service
+For example:
+kn admin domain update --custom-domain mydomain.com
+`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("update called")
-		fmt.Println(domain)
+		kubeConfig := os.Getenv("KUBECONFIG")
+		if kubeConfig == "" {
+			fmt.Println("cannot get cluster kube config, please export environment variable KUBECONFIG")
+			os.Exit(1)
+		}
+
+		cfg, err := clientcmd.BuildConfigFromFlags("", kubeConfig)
+		if err != nil {
+			fmt.Println("failed to build config:", err)
+			os.Exit(1)
+		}
+		clientset, err := kubernetes.NewForConfig(cfg)
+		if err != nil {
+			fmt.Println("failed to create client:", err)
+			os.Exit(1)
+		}
+
+		currentCm := &corev1.ConfigMap{}
+		currentCm, err = clientset.CoreV1().ConfigMaps("knative-serving").Get("config-domain", metav1.GetOptions{})
+		if err != nil {
+			fmt.Println("failed to get ConfigMaps:", err)
+			os.Exit(1)
+		}
+
+		m := make(map[string]string)
+		m[domain] = ""
+		desiredCm := currentCm.DeepCopy()
+		desiredCm.Data = m
+
+		if !equality.Semantic.DeepEqual(desiredCm.Data, currentCm.Data) {
+			_, err = clientset.CoreV1().ConfigMaps("knative-serving").Update(desiredCm)
+			if err != nil {
+				fmt.Println("failed to update ConfigMaps:", err)
+				os.Exit(1)
+			}
+			fmt.Printf("Updated Knative route domain to %s\n", domain)
+		} else {
+			fmt.Printf("Knative route domain is already set to %s. Skip update\n", domain)
+		}
 	},
 }
 
