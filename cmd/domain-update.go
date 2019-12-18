@@ -50,6 +50,7 @@ kn admin domain update --custom-domain mydomain.com
 			fmt.Println("failed to build config:", err)
 			os.Exit(1)
 		}
+
 		clientset, err := kubernetes.NewForConfig(cfg)
 		if err != nil {
 			fmt.Println("failed to create client:", err)

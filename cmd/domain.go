@@ -24,7 +24,7 @@ import (
 // domainCmd represents the domain command
 var domainCmd = &cobra.Command{
 	Use:   "domain",
-	Short: "A brief description of your command",
+	Short: "Manage Knative route domain",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 

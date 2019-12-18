@@ -31,8 +31,8 @@ var rootCmd = &cobra.Command{
 	Use:   "admin",
 	Short: "A plugin of kn client to manage Knative",
 	Long: `A plugin of kn client to manage Knative for administrators. 
-For example:
 
+For example:
 kn admin domain update - to update Knative route domain to a custom domain
 kn admin feature-flag list - to list all feature flags
 kn admin feature-flag enable https-connection - to enable https connection
