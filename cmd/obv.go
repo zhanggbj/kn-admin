@@ -1,5 +1,5 @@
 /*
-Copyright © 2019 NAME HERE <EMAIL ADDRESS>
+Copyright © 2020 NAME HERE <EMAIL ADDRESS>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -21,10 +21,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// domainCmd represents the domain command
-var featureFlagCmd = &cobra.Command{
-	Use:   "feature-flag",
-	Short: "Manage Knative feature flags",
+// obvCmd represents the obv command
+var obvCmd = &cobra.Command{
+	Use:   "obv",
+	Short: "Manage Observability",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -32,20 +32,20 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("feature-flag called")
+		fmt.Println("obv called")
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(featureFlagCmd)
+	rootCmd.AddCommand(obvCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// domainCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// obvCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// domainCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// obvCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

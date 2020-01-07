@@ -34,8 +34,10 @@ var rootCmd = &cobra.Command{
 
 For example:
 kn admin domain update - to update Knative route domain to a custom domain
-kn admin feature-flag list - to list all feature flags
-kn admin feature-flag enable https-connection - to enable https connection
+kn admin https-connection enable - to enable https connection for Knative Service
+kn admin private-registry enable - to enable deployment from the private registry
+kn admin scale-to-zero enable - to enable scale to zero
+kn admin obv profiling get -heap - to get Knative Serving profiling data
 `,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
