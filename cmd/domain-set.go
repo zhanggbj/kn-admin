@@ -31,12 +31,12 @@ import (
 var domain string
 
 // updateCmd represents the update command
-var updateCmd = &cobra.Command{
-	Use:   "update",
-	Short: "Update route domain",
-	Long: `Update Knative route domain for service
+var setCmd = &cobra.Command{
+	Use:   "set",
+	Short: "set route domain",
+	Long: `set Knative route domain for service
 For example:
-kn admin domain update --custom-domain mydomain.com
+kn admin domain set --custom-domain mydomain.com
 `,
 	Run: func(cmd *cobra.Command, args []string) {
 		kubeConfig := os.Getenv("KUBECONFIG")
@@ -84,8 +84,8 @@ kn admin domain update --custom-domain mydomain.com
 
 func init() {
 
-	updateCmd.Flags().StringVarP(&domain, "custom-domain", "d", "", "Desired custom domain")
-	domainCmd.AddCommand(updateCmd)
+	setCmd.Flags().StringVarP(&domain, "custom-domain", "d", "", "Desired custom domain")
+	domainCmd.AddCommand(setCmd)
 
 	// Here you will define your flags and configuration settings.
 

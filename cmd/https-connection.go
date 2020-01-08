@@ -1,5 +1,5 @@
 /*
-Copyright © 2019 NAME HERE <EMAIL ADDRESS>
+Copyright © 2020 NAME HERE <EMAIL ADDRESS>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -17,13 +17,14 @@ package cmd
 
 import (
 	"fmt"
+
 	"github.com/spf13/cobra"
 )
 
-// domainCmd represents the domain command
-var domainCmd = &cobra.Command{
-	Use:   "domain",
-	Short: "Manage Knative route domain",
+// httpsConnectionCmd represents the httpsConnection command
+var httpsConnectionCmd = &cobra.Command{
+	Use:   "https-connection",
+	Short: "Manage https connection for Service",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -31,20 +32,20 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("domain called")
+		fmt.Println("httpsConnection called")
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(domainCmd)
+	rootCmd.AddCommand(httpsConnectionCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// domainCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// httpsConnectionCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// domainCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// httpsConnectionCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
