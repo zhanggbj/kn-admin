@@ -24,7 +24,7 @@ import (
 // scaleToZeroCmd represents the scaleToZero command
 var scaleToZeroCmd = &cobra.Command{
 	Use:   "scale-to-zero",
-	Short: "Manage feature of scale to zero",
+	Short: "Manage scale to zero",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 

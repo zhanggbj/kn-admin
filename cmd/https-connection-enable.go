@@ -148,7 +148,7 @@ to quickly create a Cobra application.`,
 			os.Exit(1)
 		}
 
-		fmt.Printf("Enabled feature flag https-connection\n")
+		fmt.Printf("Enabled https-connection\n")
 
 	},
 }

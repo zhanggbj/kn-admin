@@ -24,7 +24,7 @@ import (
 // ingressgatewayCmd represents the ingressgateway command
 var ingressgatewayCmd = &cobra.Command{
 	Use:   "ingressgateway",
-	Short: "Manage Ingress Gateway",
+	Short: "Manage ingress gateway",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 

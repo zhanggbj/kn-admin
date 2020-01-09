@@ -21,10 +21,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// autoscalingConfigCmd represents the autoscalingConfig command
-var autoscalingConfigCmd = &cobra.Command{
-	Use:   "autoscaling",
-	Short: "Manage autoscaling config",
+// profilingCmd represents the profiling command
+var profilingCmd = &cobra.Command{
+	Use:   "profiling",
+	Short: "Manage profiling data",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -32,20 +32,20 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("autoscalingConfig called")
+		fmt.Println("profiling called")
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(autoscalingConfigCmd)
+	rootCmd.AddCommand(profilingCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// autoscalingConfigCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// profilingCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// autoscalingConfigCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// profilingCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
