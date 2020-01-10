@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package cmd
+package https_connection
 
 import (
 	"fmt"
@@ -40,7 +40,7 @@ var flags cmdFlags
 // enableCmd represents the enable command
 var enableCmd = &cobra.Command{
 	Use:   "enable",
-	Short: "A brief description of your command",
+	Short: "Enable https connecion",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -153,20 +153,7 @@ to quickly create a Cobra application.`,
 	},
 }
 
-
 func init() {
-	httpsConnectionCmd.AddCommand(enableCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// enableCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// enableCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-
 	enableCmd.Flags().StringVar(&flags.TLSCertFile, "tls-cert", "", "Path to TLS certificate file")
 	enableCmd.Flags().StringVar(&flags.TLSKeyFile, "tls-key", "", "Path to TLS key file")
 }

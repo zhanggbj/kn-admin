@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package cmd
+package private_registry
 
 import (
 	"fmt"
@@ -133,18 +133,6 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
-	privateRegistryCmd.AddCommand(prEnableCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// enableCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// enableCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-
 	prEnableCmd.Flags().StringVar(&prflags.SecretName, "secret-name", "", "Registry Secret Name")
 	prEnableCmd.Flags().StringVar(&prflags.DockerServer, "docker-server", "", "Registry Address")
 	prEnableCmd.Flags().StringVar(&prflags.DockerEmail, "docker-email", "", "Registry Email")

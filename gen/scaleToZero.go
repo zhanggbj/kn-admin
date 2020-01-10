@@ -13,39 +13,27 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-package cmd
+package gen
 
 import (
 	"fmt"
-
 	"github.com/spf13/cobra"
 )
 
-// autotlsCmd represents the autotls command
-var autotlsCmd = &cobra.Command{
-	Use:   "autotls",
-	Short: "Manage autotls with Cert Manager",
-	Long: `A longer description that spans multiple lines and likely contains examples
+// scaleToZeroCmd represents the scaleToZero command
+func NewScaleToZeroCmd() *cobra.Command {
+	var scaleToZeroCmd = &cobra.Command{
+		Use:   "scale-to-zero",
+		Short: "Manage scale to zero",
+		Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("autotls called")
-	},
-}
-
-func init() {
-	rootCmd.AddCommand(autotlsCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// autotlsCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// autotlsCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Println("scaleToZero called")
+		},
+	}
+	return scaleToZeroCmd
 }
